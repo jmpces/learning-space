@@ -1,0 +1,18 @@
+[
+	{ "keys": ["f5"], "command": "build" },
+	{ "keys": ["ctrl+0"], "command": "focus_side_bar" },
+	{ "keys": ["ctrl+b"], "command": "toggle_side_bar" },
+	{ "keys": ["ctrl+shift+o"], "command": "goto_symbol_in_project" },
+	{ "keys": ["ctrl+shift+\\"], "command": "move_to", "args": {"to": "brackets"} },
+	{ "keys": ["ctrl+enter"], "command": "select", "args": { "extend": true, "clear_to_right": true }, "context":
+		[
+			{ "key": "overlay_has_focus", "operator": "equal", "operand": true },
+			{ "key": "overlay_name", "operator": "equal", "operand" : "goto" }
+		],
+	},
+	{ "keys": ["ctrl+shift+enter"], "command": "run_macro_file", "args": {"file": "res://Packages/Default/Add Line Before.sublime-macro"} },
+	{ "keys": ["ctrl+d"], "command": "find_under_expand" },
+	{ "keys": ["ctrl+f"], "command": "show_panel", "args": {"panel": "find", "reverse": false} },
+	{ "keys": ["ctrl+alt+-"], "command": "jump_back" },
+	{ "keys": ["ctrl+alt+0"], "command": "jump_forward" },
+]

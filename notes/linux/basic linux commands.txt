@@ -1,0 +1,81 @@
+clear	- cleares the terminal outputs
+ctrl+c	- terminate commands or programs
+ctrl+z	- force stop
+exit	- exits the terminal
+sudo reboot - reboots the computer
+
+grep -c ^processor /proc/cpuinfo 	- shows number of cores
+nproc --all							- shows number of cores too
+lscpu								- display system informations like, architecture, endianess, threads per core, num of cores, & etc.
+
+
+df	- display availabe disk spaces in each partitions
+du	- show the disk usage of a file in your system, (you can also use the "ls-lah" to view the file sizes of all the files in a folder
+hostname- shows your name in your host network
+	hostname -I : shows your IP address in your network
+ping	- basic knowledege
+
+
+pwd 	- current directory
+ls 	- display files in directory, "ls -a" (displays hidden files)
+cd	- change directory (".." - means go back to parent dir)
+mkdir	- create folder (for folder name w/ space "mkdir you\ folder")
+rmdir	- delete an empty directory
+rm	- delete a directory w/ files inside, or files, "rm-r" for directory only
+touch	- create a file
+man & help - shows info about commands "man cd" or "cd -help"
+
+cp	- copies file arg1:base_file_loc, arg2:new_copied_file_loc
+mv	- use to move files, can also be used to rename files
+locate	- search, "locate -i toFind" ignores case, use *to*Find* "*" if you remember two or more words
+
+echo	- moves some data/ write to a file(usually txt) "echo your text >> yourtxtfile.txt"
+cat	- display content of a file
+sudo	- super user previleges
+
+nano, vi, jed - pre installed text editors in the linux command line
+make a new file using nano : "nane check.txt" (Ctrl+X) after to save
+
+tar	- use to work with tarballs(or files compressed in a tarball archive)
+apt-get	- use to work with packages in the linux command line needs super user previlages
+	"sudo apt-get install yourpackage" - installs yourpackage package
+	"sudo apt-get update" - updates your repository
+	"sudo apt-get upgrade" - updates the system
+	"sudo apt-get dist-upgrade" - upgrades the distro
+	"apt-cache search" - used to search for a package
+
+chmod	- use to make an exceutable "sudo chmod +x pythoncode.py"
+
+
+
+
+
+// formating drives in ubuntu
+
+1. find your drive you want to format
+	df -h
+	
+2. unmount it after you found it
+	sudo umount /dev/sdc1 
+
+3.  Format
+
+	for vFat
+		sudo mkfs.vfat /dev/sdc1 
+
+	for NTFS
+		sudo mkfs.ntfs /dev/sdc1 
+
+	for EXT4
+		sudo mkfs.ext4 /dev/sdc1 
+
+
+
+
+
+
+
+
+
+
+

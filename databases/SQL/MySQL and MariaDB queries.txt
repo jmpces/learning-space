@@ -1,0 +1,199 @@
+#-- ACCESSING MYSQL/MARIADB ------------------------------------------
+   in command line:
+      = mysql -h "name or domain_name or ip_of_host" -u users_name -p
+         // this will promt you to enter your password for the user that you enter
+
+#-- ADD ONS ----------------------------------------------------------
+   display version of mysql/mariadb
+      = SELECT VERSION();
+
+   display current date and exact date and time
+      = SELECT CURRENT_DATE;   // DISPLAY YYYY-MM-DD
+      = SELECT CURRENT_TIME;   // DISPLAY HH:MM:SS
+      = SELECT NOW();	       // DISPLAY YYYY-MM-DD-HH:MM:SS
+      = SELECT DAYNAME(date);  // DISPLAY NAME OF THE DAY ex: MONDAY,FRIDAY, etc.
+
+   display with combine queries in one line
+      = SELECT VERSION(), CURRENT_DATE;
+
+   using operation inside mysql and displaying the answer
+      = SELECT SIN(PI()/4), (4+1)*5;
+
+   // as you can see, the "SELECT" keyword is use to display things in your mysql/mariadb
+
+
+   
+
+#-- CRUD EXAMPLES ----------------------------------------------------
+	
+   //DATABASE
+      -create
+	 # CREATE A NEW DATABASE
+         	CREATE DATABASE database_name
+	 	# copy a database
+				- run comman line as administrator
+				- create a new_database
+				- create an sql dump file using the old_database
+					mysqldump -u root -p"password" -R old_database_name > old_database_name.sql
+				- import the dump file to a new empty database the you have created
+					mysql -u root -p"password" new_database_name < old_database_name.sql
+
+      -read
+	 = SHOW DATABASES;	// show all databases in mysql/mariadb
+	 = USE database_name;   // select the database to use
+      -update
+	# RENAME A DATABASE;
+		- run command line as administrator
+		- create a new database
+		- COPY the content of your old database to the new one
+		- if you're sure DROP the old database
+		- (mysql removed the rename database method for security reasons
+		   so we should do it manually)
+	   
+      -delete
+	   DROP DATABASE database_name;
+
+   //TABLE
+      -create
+         = CREATE TABLE table_name (col_1_Name data_type, col_2_Name data_type,...,col_n_Name data_type)
+         = CREATE TABLE table_name (personID INT PRIMARY KEY, personName VARCHAR(150))
+	 = CREATE TABLE table_name (personID INT AUTO_INCREMENT, personName VARCHAR(70))
+      -read
+	 = DESCRIBE table_name;    // shows the columns of a table and its additional informations
+	 = SELECT * FROM table_name;	// shows the whole contents of the table
+      -update
+	# rename table
+		ALTER TABLE old_table_name RENAME new_table_name;
+		RENAME TABLE old_table_name TO new_table_name;          // more flexible, can rename multiple tables at one action
+      -delete
+	= DROP TABLE table_name;
+	
+
+   // CONTENT/RECORD
+      -create (LOAD - input using a txt file, INSERT - input one by one)
+	 #adding rows using txt file
+	    LOAD DATA LOCAL INFILE 'path/text_containing_rowInput_record' INTO TABLE table_name
+
+	 #adding row using command line queries
+	 #yyyy-mm-dd is the format for date data type
+	 #NULL is the data value for nothing
+	    INSERT INTO table_name VALUES('column1_value','column2_value','yyyy-mm-dd',NULL);
+	 
+      -read
+	 #display all row values of one certain column
+	    SELECT column_name FROM table_name;
+
+	 #display all row values of multiple columns
+	    SELECT col1_name, col2_name,..., coln_name FROM table_name;
+	 
+	 #display all row values of all columns : '*' refers to all columns in that table
+	    SELECT * FROM table_name;  
+	 
+	 #displays all row values all columns that only matched the condition in WHERE : (reads as : where column name is equal to column value stated)
+	    WHERE has AND and OR logical operators to specify the conditions more
+	    SELECT * FROM table_name WHERE column_name = 'column_value';     // displays the row that matched the condition in WHERE (reads as : where column name is equal to column value stated)
+		you can create conditions by using the [ = , != , < , > , <= , >= ] to compare values 
+		(you can combine MULTIPLE conditions using the AND and OR logical syntx) "AND", "OR".
+
+	 #display non-repeated values // you can specifiy it more with conditions
+	    SELECT DISTINC * FROM table_name; 
+
+      -update
+	 #update a certain column in a row/record
+	    UPDATE table_name SET column_name =  'new_value' WHERE column_name = 'column_value';
+      
+      -delete
+	 // delete all row
+	    DELETE FROM table_name;
+	
+	 // delete a certain row
+	    DELETE FROM table_name WHERE column_name = 'column_value'; 
+
+   // COLUMN
+      -create
+	 ALTER TABLE table_name ADD COLUMN column_name data_type;
+      -read
+	 SELECT column_name FROM table_name WHERE column_name = 'value';
+      -update
+         ALTER TABLE table_name MODIFY COLUMN column_name data_type_to_change; (change data type)
+	 ALTER TABLE table_name CHANGE old_column_name new_column_name data_type;
+      -delete
+	 ALTER TABLE table_name DROP COLUMN column_name;
+
+#------------------------------------------------------------
+
+#data types
+	- NUMERIC DATA TYPES
+		INT()
+		DEC(), FIXED()
+		DOUBLE(), REAL()
+	
+	- STRING DATA TYPES
+		CHAR()
+		VARCHAR()
+		BINARY
+		VARBINARY
+		BLOB
+		TEXT
+		ENUM
+		SET
+		
+		
+	- DATES and TIME
+		DATE 	  - yyyy-mm-dd
+		TIME 	  - hh:mm:ss
+		DATETIME  - yyyy-mm-dd hh:mm:ss
+		TIMESTAMP - yyyy-mm-dd hh:mm:ss
+		YEAR	  - yyyy
+
+#----------------------------------------------------------------
+
+#functions
+	- DATE FUNCTIONS
+		CONVERT_TZ()	-	convert timezone to another
+		CURRENT_DATE()	-	RETURNS CURRENT DATE IN YYYY-MM-DD
+		
+		// DATE EXTRACTION
+		DATE()		-	RETURNS THE DATE PART OF DATE/DATETIME INPUT
+		YEAR()		- 	RETURNS THE YEAR OF A DATE INPUT
+		MONTH()		-	RETURNS THE MONTH OF THE DATE INPUT
+		DAY()		-	RETURNS THE DAY OF THE DATE INPUT
+
+		MONTHNAME()	-	RETURNS THE NAME OF THE MONTH FROM A DATE INPUT
+		DAYNAME()	-	RETURNS THE NAME OF THE DAY FROM A DATE INPUT
+
+		DAYOFYEAR()	-	RETURNS THE DAY OF THE YEAR FROM A DATE INPUT
+		DAYOFMONTH()	-	RETURNS THE DAY OF THE MONTH FROM A DATE INPUT
+
+		WEEKOFYEAR()	-	RETURNS THE WEEK OF A DATE INPUT
+
+		// intervals
+			year  -	  end_date - start_date; 
+			month -	 (end_date - start_date * 12) - MONTH(start_date);
+			days  -  (end_date - start_date * 365) - DAYOFYEAR(start_date);
+
+	- TIME FUNCTION
+		CURRENT_TIME()	-	RETURNS CURRENT TIME IN HH:MM:SS 
+		NOW()		- 	RETURNS THE CURRENT DATETIME IN YYYY-MM-DD HH:MM:SS
+		HOUR(hh:mm:ss)	- 	RETURNS HOUR
+		MINUTE(hh:mm:ss)-	RETURNS MINUTE
+		SECOND(hh:mm:ss)- 	RETURNS SECOND
+
+	- COUNTING
+		SELECT COUNT
+			COUNT(column_name)
+
+	- PRE-DEFINED queries
+		# creating view
+			CREATE VIEW view_name AS select_query;
+			ex: CREATE VIEW myViewDisplay AS SELECT * FROM mytable;
+		# using view
+			SELECT * FROM myViewDisplay;
+			// this will run the "select * from" query, this is useful for long complicated sql quries.
+		
+
+- ANALYSIS 
+	# coalesce - 
+		SELECT column_name, ifnull(other_col_name, 0) FROM table_name;	// this will display "0" in the other_col_name if the value is "null"
+
+		

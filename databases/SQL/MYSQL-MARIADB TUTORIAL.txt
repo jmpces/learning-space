@@ -1,0 +1,209 @@
+MySql Query Commands
+
+// to enter mysql in command promt:
+mysql -h (name/domain name or ip of host) -u (name of user) -p
+//then it will promt you to enter the user password to go in msql
+
+// "SELECT" COMMAND
+EX:
+SELECT VERSION();  // WILL DISPLAY THE VERSION OF MYSQL/MARIADB
+SELECT CURRENT_DATE; // DISPLAYS HE CURRENT DATE
+SELECT VERSION(), CURRENT_DATE; // COMBINE IN ONE LINE
+SELECT NOW(); // EXACT DATE AND TIME
+
+// you can even use mysql as a simple calculator
+SELECT SIN(PI()/4), (4+1)*5;
+
+//everything displayed in mysql is in tabular form
+
+//mysql reads query and checks if it is valid, but it does not execute it until it sees a semicolon
+
+//EX: of multiple line statement
+mysql> SELECT
+ -> USER()
+ -> ,
+ -> CURRENT_DATE;
++---------------+--------------+
+| USER() | CURRENT_DATE |
++---------------+--------------+
+| jon@localhost | 2010-08-06 |
++---------------+--------------+
+
+you can use the "\c" for canceling your multiple line statement queries
+
+
+// STRINGS, COMMENTS, BACKTICS
+//The '> and "> prompts occur during string collection (another way of saying that MySQL is waiting
+for completion of a string). In MySQL, you can write strings surrounded by either '  or " characters (for
+example, 'hello'  or "goodbye"), and mysql lets you enter strings that span multiple lines. When
+you see a '> or "> prompt, it means that you have entered a line containing a string that begins with a '
+or " quote character, but have not yet entered the matching quote that terminates the string. This often
+indicates that you have inadvertently left out a quote character. For examp
+
+//------------------------------------------------------------
+//DISPLAY SHOW EXISTING CURRENT DATABASES 
+SHOW DATABASES;
+
+The list of databases displayed by the statement may be different on your machine; SHOW DATABASES
+does not show databases that you have no privileges for if you do not have the SHOW DATABASES
+privilege.
+
+// GRANTING ACCESS TO DATABASES EXAMPLE
+GRANT ALL ON database_name.* TO 'your_mysql_name'@'your_client_host';
+where your_mysql_name is the MySQL user name assigned to you and your_client_host is the host
+from which you connect to the server.
+
+//----------------------------------------------------------------
+//CREATE A DATABASE
+CREATE DATABASE database_name;
+
+// to select a databse for use
+USE database_name;
+
+// you can directly acces a database rightaway from loging in to your mysql 
+mysql -h host -u user -p menagerie
+
+//------------------------------------------------------------------
+
+//show available tables in your database
+
+SHOW TABLES;
+
+
+
+// creating a table in a database
+
+CREATE TABLE (table_name) (col1_name VARCHAR(20), col2_name VARCHAR(20), col3_name VARCHAR(20),
+col4_name CHAR(1), col5_name DATE, col6_name DATE);
+
+//col1_name... col6_name are the names displayed on top this is the name of the columns, and the:
+//VARCHAR(number)s, DATE, CHAR(1) are an example of data type. it is a column data type specifier
+// DATEs format is yyyy-mm-dd
+
+see database datatypes for more info
+
+// check if your table is created properly
+To verify that your table was created the way you expected, use a DESCRIBE statement:
+mysql> DESCRIBE (table_name); // pet here is an examle of a table in a selected database.
+//fields are your columns, type is the data type stored in that column, and etc.
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| name    | varchar(20) | YES  |     | NULL    |       |
+| owner   | varchar(20) | YES  |     | NULL    |       |
+| species | varchar(20) | YES  |     | NULL    |       |
+| sex     | char(1)     | YES  |     | NULL    |       |
+| birth   | date        | YES  |     | NULL    |       |
+| death   | date        | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+
+// ADDING DATA/ROWS IN YOUR TABLE using (LOAD and INSERT)
+LOAD adds new row/data by using a text(.txt) file you input the values in the txt file then use LOAD in mysql selected Database table to
+add all of the row/data in the txt file
+INSERT adds a row one at a time directly from the mysql command line or (query)
+
+USING THE LOAD :
+represent these in your text file, use \N (backslash, capital-N). For example, the record for Whistler the bird
+would look like this (where the whitespace between values is a single tab character):
+Whistler Gwen bird \N 1997-12-09 \N
+To load the text file pet.txt into the pet table, use this statement:
+mysql> LOAD DATA LOCAL INFILE '/path/pet.txt' INTO TABLE pet;
+If you created the file on Windows with an editor that uses \r\n as a line terminator, you should use this
+statement instead:
+mysql> LOAD DATA LOCAL INFILE '/path/pet.txt' INTO TABLE pet
+ LINES TERMINATED BY '\r\n';
+(On an Apple machine running macOS, you would likely want to use LINES TERMINATED BY '\r' .)
+You can specify the column value separator and end of line marker explicitly in the LOAD DATA statement
+if you wish, but the defaults are tab and linefeed. These are sufficient for the statement to read the file
+pet.txt properly
+
+USING THE INSERT
+mysql> INSERT INTO table_name
+ VALUES ('Puffball','Diane','hamster','f','1999-03-30',NULL);
+//NULL for row-columns that don't have value yet.
+
+//Retrieving Information from a Table (see, look)
+the SELECT - statement is used to pull information from a table.
+The general form of the statement is:
+
+SELECT what_to_select
+FROM which_table
+WHERE conditions_to_satisfy;
+
+what_to_select - indicates what you want to see. This can be a list of columns, or 
+	: '*' to indicate “all columns.”
+
+which_table - indicates the table from which you want to retrieve data.
+
+WHERE - clause is optional.
+If it is present, conditions_to_satisfy specifies one or more conditions that rows must
+satisfy to qualify for retrieval.
+can use:
+column_name = 'column_value' // for selecting an item
+AND and OR logical operators is also available
+
+
+you can use the :
+SELECT (column_name) FROM (table_name) WHERE (other_column_name) = '(that_other_column_names_value)';
+// this command will display the item in your SELECT (column_name)
+// using * will display the entire row where WHERE macthed its conditions
+
+EX: display all the content of a table in a database
+SELECT * FROM table_name;
+// DISPLAY REPEATING MATCHES ONLY ONCE
+SELECT DISTINCT column_name FROM table_name; // this will only show the value of the column that have same value with other rows in that specific column.
+
+// specifiying only selected columns to show
+SELECT column_name2, column_name4, column_name7 FROM table_name WHERE (what ever condition);
+
+// Adding/creating/filling a row in table
+INSERT INTO table_name VALUES('column1_value','column2_value',...,'column n value');
+
+//delete
+DELETE FROM table_name // delete all contents of table
+
+// edit the item in the specific column where the WHERE conditions matched
+UPDATE table_name SET column_name = 'column_value' WHERE another_column_name = 'that_another_columns_value';
+
+
+// SORTING using (ORDER BY)
+// accending
+SELECT column_name1, column_name2 FROM table_name ORDER BY column_name1;      // you can use whatever ORDER BY column_name as a base.
+
+//deccending
+SELECT column_name1, column_name2 FROM table_name ORDER BY column_name_base DESC;
+
+//multiple sorting
+SELECT column_name1, column_name2, column_name3 FROM table_name ORDER BY column_name1, column_name2 DESC;
+// the above query will sort first the row base on the column_name1,
+// then will treat the sorted row base on column_name1 as a group or different table (column that has the same value is considered as a separate group),
+// then it will sort every row in each group base on column_name2.
+
+// for case sensitive sorting use the (ORDER BY BINARY column_name) to sort case sensitive columns (uppercase and lowercases will be separated)
+
+
+// DATE CALCULATION
+// age
+SELECT name_column, birth_column, CURDATE(), TIMESTAMPDIFF(YEAR,birth_column,CURDATE()) AS age_column FROM table_name;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

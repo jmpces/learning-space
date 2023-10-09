@@ -1,0 +1,48 @@
+{
+    "editor.fontSize": 13,
+    "editor.fontFamily": "'Courier New', monospace",
+    "breadcrumbs.enabled": false,
+    "editor.tabSize": 4,
+
+    "[typescript]": {
+        "editor.tabSize": 2
+    },
+
+    "[javascript]": {
+        "editor.tabSize": 2
+    },
+
+    "[json]": {
+        "editor.tabSize": 2
+    },
+
+    "[html]": {
+        "editor.tabSize": 2
+    },
+    
+    "workbench.colorCustomizations": {
+        "statusBar.background": "#ffffff",
+        "statusBar.foreground": "#000000"
+    },
+    
+    "editor.insertSpaces": true,
+    "workbench.colorTheme": "GitHub Light Default",
+    "editor.minimap.enabled": false,
+
+    "editor.semanticTokenColorCustomizations": {
+        "enabled": true,
+        "rules": {
+            "*.mutable": {
+                "underline": false,
+            }
+        }
+    },
+    "rust-analyzer.inlayHints.chainingHints.enable": false,
+    "rust-analyzer.inlayHints.closingBraceHints.enable": false,
+    "rust-analyzer.inlayHints.parameterHints.enable": false,
+    "rust-analyzer.inlayHints.renderColons": false,
+    "rust-analyzer.inlayHints.typeHints.enable": false,
+    "C_Cpp.intelliSenseEngine": "disabled",
+
+    "clangd.restartAfterCrash": true,
+}

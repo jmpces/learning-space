@@ -1,0 +1,7 @@
+// Section A - the configured options and settings for Tutorial
+#define VERSION_MAJOR @cmake_lib_optional_VERSION_MAJOR@
+#define VERSION_MINOR @cmake_lib_optional_VERSION_MINOR@
+#define VERSION_PATCH @cmake_lib_optional_VERSION_PATCH@
+
+// this is the USE_MYMATH definition if enabled
+#cmakedefine USE_MYMATH

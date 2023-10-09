@@ -1,0 +1,5 @@
+*.cpp
+.vscode
+*.o
+*.out
+test.cpp

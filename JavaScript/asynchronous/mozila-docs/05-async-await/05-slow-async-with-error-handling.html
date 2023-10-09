@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Demonstration of slow async/await with error handling</title>
+  </head>
+  <body>
+    <script>
+      
+      function timeoutPromiseResolve(interval) {
+        return new Promise((resolve, reject) => {
+          setTimeout(function(){
+            resolve("successful");
+          }, interval);
+        });
+      };
+
+      function timeoutPromiseReject(interval) {
+        return new Promise((resolve, reject) => {
+          setTimeout(function(){
+            reject("error");
+          }, interval);
+        });
+      };
+
+      async function timeTest() {
+        await timeoutPromiseResolve(5000);
+        await timeoutPromiseReject(2000);
+        await timeoutPromiseResolve(3000);
+
+        /* NOTE : notice here we did not return any value for reject but
+        still we were able to get the error in the .then().catch() method chain
+        this is because errors propagate to the .then().catch() */
+      }
+
+      let startTime = Date.now();
+
+      timeTest()
+        .then(() => {})
+        .catch(e => {
+          console.log(e);
+          let finishTime = Date.now();
+          let timeTaken = finishTime - startTime;
+          alert("Time taken in milliseconds: " + timeTaken);
+        })
+
+    </script>
+  </body>
+</html>

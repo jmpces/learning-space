@@ -1,0 +1,51 @@
+sudo apt-get update && sudo apt-get upgrade
+
+sudo apt-get install build-essential cmake git libgtk2.0-dev pkg-config libavcodec-dev libavformat-dev libswscale-dev
+
+git clone https://github.com/opencv/opencv.git
+
+cd ~/opencv
+
+mkdir release
+
+cd release
+
+cmake -D CMAKE_BUILD_TYPE=Release -D OPENCV_GENERATE_PKGCONFIG=YES -D CMAKE_INSTALL_PREFIX=/usr/local ..
+
+make
+
+sudo make install
+
+// [optional] follow this steps if opencv compilation does not work: error: libopencv_core.so.4.5 cannot open...
+
+1. 
+	sudo find / -name "libopencv_core.so.^.^*"   <- the ^ here is the version number that the compiler is saying
+
+	usually though these files is locatet in /usr/local/lib/libopencv_core.so.^.^
+	
+2.
+	Create a file called /etc/ld.so.conf.d/opencv.conf
+	then write the directory you found in step 1 where you found the libopencv_core... to the created opencv.conf, example below
+	/usr/local/lib/
+
+3.
+	then run the command below
+	sudo ldconfig -v
+
+g++ -o test.o test.cpp -std=c++11 `pkg-config --cflags --libs opencv4`
+
+
+-----------------------------------------------------
+
+For static builds, all steps are also the same but... you might need to edit the pkgconfig file of opencv.pc in /usr/local/lib/pkgconfig/opencv4.pc
+because some times the installation might not set the proper path or might double the "usr/local/lib/lib" path of
+your libraries
+
+you might also need to move the opencv2 folder inside the /usr/local/include/opencv4/opencv2 into the include directory (one level down)
+
+to compile statically use:
+
+g++ main.cpp -o test `pkg-config --cflags --libs --static opencv4`
+
+
+https://docs.opencv.org/4.5.3/db/d05/tutorial_config_reference.html

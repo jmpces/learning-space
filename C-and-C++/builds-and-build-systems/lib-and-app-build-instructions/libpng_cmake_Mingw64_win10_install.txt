@@ -1,0 +1,34 @@
+Install libpng in windows using mingw64 and cmake
+
+Requirements:
+	- Mingw64 - Posix (you maybe you can also use mingw32 but I don't know if that will work the same)
+	- cmake (atm: i'm using "cmake version 3.20.0-rc3")
+	- zlib source
+	- libpng source
+  
+cmake and Mingw64 bin's should be already in your environment variables
+
+1. open your cmd
+
+2. install Zlib:
+
+	cd "your/zlib/path"
+	mkdir "build"
+	cmake -G "MinGW Makefiles" -DCMAKE_INSTALL_PREFIX="your/zlib/build/path"
+	mingw32-make
+	mingw32-make install
+  
+3. close your cmd before adding the environment variables
+   so that when you install libpng cmake will find zlib
+
+4. add the "bin", "include", and "lib" folder of zlib/build to your environment variables
+
+5. open your cmd again
+
+6. install libpng:
+
+	cd "your/libpgn/path"
+	mkdir "build"
+	cmake -G "MinGW Makefiles" -DCMAKE_INSTALL_PREFIX="your/libpng/build/path"
+	mingw32-make
+	mingw32-make install

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <title>Simple fetch()</title>
+  </head>
+  <body>
+    <script>
+
+      let promise = fetch('coffee.jpg');
+
+      let promise2 = promise.then(response =>{
+        if(!response.ok)
+          throw Error(`HTTP error! status : ${response.status}`);
+        else
+          return response.blob();
+      });
+      
+      let promise3 = promise2.then(myBlob => {
+        let objectURL = URL.createObjectURL(myBlob);
+        let image = document.createElement('img');
+        image.src = objectURL;
+        document.body.appendChild(image);
+      });
+
+      let errorCase = promise3.catch(e => {
+        console.log('There has been a problem with your fetch operation: ' + e.message);
+      });
+    
+    </script>
+  </body>
+</html>
+
+<!--
+  Note: The way that a .then() block works is similar to when you add an event listener to an object using AddEventListener().
+  It doesn't run until an event occurs (when the promise fulfills).
+  The most notable difference is that a .then() will only run once for each time it is used,
+  whereas an event listener could be invoked multiple times.
+
+  Note: You will probably notice that these examples are somewhat contrived.
+  You could just do away with the whole fetch() and blob() chain,
+  and just create an <img> element and set its src attribute value to the URL of the image file coffee.jpg.
+  We did, however, pick this example because it demonstrates promises in a nice simple fashion,
+  rather than for its real-world appropriateness.
+-->

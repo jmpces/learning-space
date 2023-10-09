@@ -1,0 +1,51 @@
+<!-- https://stackoverflow.com/questions/70616149/how-to-overlap-a-top-div-and-a-bottom-div-into-an-image-without-generating-u/70617545#70617545 -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .image-container {
+            width: 1000px;
+            padding: 50px 0;
+            position: relative;
+        }
+
+        .image {
+        max-width: 100%;
+        }
+
+        .image-container::before, .image-container::after {
+            content: '';
+            height: 100px;
+            position: absolute;
+            width: 100%;
+        }
+
+        .image-container::before {
+            background-image: linear-gradient(45deg, rgba(0, 194, 228, 0.75), rgba(214, 0, 203, 0.479));
+            top: 0;
+        }
+
+        .image-container::after {
+            background-image: linear-gradient(45deg, rgba(214, 0, 203, 0.479), rgba(0, 194, 228, 0.75));
+            bottom: 0;
+            left: 0;
+        }
+
+    </style>
+    <title>Image with Gradient</title>
+</head>
+<body>
+    <h1>Start</h1>
+        <div class="image-container">
+            <img class="image" src="https://placekitten.com/g/1920/1080">
+        </div>
+    <h1>End</h1>
+</body>
+</html>

@@ -1,0 +1,16 @@
+### Don't Forget
+- always put your framwork api inside a **namespace**
+  - if the namespace is too long you can shorten it by aliasing a new namespace in a code block ex. ```namespace shorterNameSpace = std::a::very::long::nested::namespace::names;```
+- virtual functions in base class should be overriden with the same function signatures in the derived class (same return type, same parameter counts, and same parameter type)
+- it would be much better to always make a virtual destructor for base classes for derived classes to override
+- when you have a method that is intended to not change class members, always put **const** after it
+- when you have a method that is an overide from a base class' virtual function, always put **override** after it
+- to disable annoying unused parameter warnings, just don't put a parameter name in the method declarations
+- always remember to declare and define **constructor and destructors**
+- always remember to declare and define **copy & move constructors**
+- always remember to overload **copy & move assignment operators**
+- always put **noexcept** after move constructors and move assignment operators function signatures 
+- improve locality of reference
+  - Temporal locality
+  - Spatial locality
+  - Memory locality

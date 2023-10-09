@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <title>Simple fetch()</title>
+  </head>
+  <body>
+    <script>
+
+      // ASSIGN_VERSION();
+      // CHAINED_VERSION();
+      // ASYNC_AWAIT_VERSION1();
+      // ASYNC_AWAIT_VERSION2();
+      ASYNC_AWAIT_WITH_SYNC_CATCH_VERSION();
+
+      /* ASSIGNING TO VARIABLE */
+      function ASSIGN_VERSION(){
+        console.log('promise : assigned version');
+
+        let promise = fetch('coffee.jpg');
+
+        let promise2 = promise.then(response =>{
+          if(!response.ok)
+            throw Error(`HTTP error! status : ${response.status}`);
+          else
+            return response.blob();
+        });
+        
+        let promise3 = promise2.then(myBlob => {
+          let objectURL = URL.createObjectURL(myBlob);
+          let image = document.createElement('img');
+          image.src = objectURL;
+          document.body.appendChild(image);
+        });
+
+        let errorCase = promise3.catch(e => {
+          console.log('There has been a problem with your fetch operation: ' + e.message);
+        });
+      }
+
+      /* CHAINED VERSION */
+      function CHAINED_VERSION(){
+        console.log('promise : chained version');
+
+        fetch('coffee.jpg')
+        .then(response => {
+          if (!response.ok)
+            throw new Error(`HTTP error! status: ${response.status}`);
+          else
+            return response.blob();
+        })
+        .then(myBlob => {
+          let objectURL = URL.createObjectURL(myBlob);
+          let image = document.createElement('img');
+          image.src = objectURL;
+          document.body.appendChild(image);
+        })
+        .catch(e => {
+          console.log('There has been a problem with your fetch operation: ' + e.message);
+        });
+      }
+
+      /* ASYNC/AWAIT VERSION 1 */
+      async function ASYNC_AWAIT_VERSION1(){
+        console.log('promise : async/await version 1');
+
+        async function myFetch() {
+
+          let response = await fetch('coffee.jpg');
+
+          if (!response.ok)
+            throw new Error(`HTTP error! status: ${response.status}`);
+
+          let myBlob = await response.blob();
+
+          let objectURL = URL.createObjectURL(myBlob);
+          let image = document.createElement('img');
+          image.src = objectURL;
+          document.body.appendChild(image);
+        }
+
+        myFetch()
+        .catch(e => {
+          console.log('There has been a problem with your fetch operation: ' + e.message);
+        });
+      }
+
+      /* ASYNC/AWAIT VERSION 2 */
+      function ASYNC_AWAIT_VERSION2(){
+        console.log('promise : async/await version 2');
+
+        async function myFetch() {
+          let response = await fetch('coffee.jpg');
+          if (!response.ok)
+            throw new Error(`HTTP error! status: ${response.status}`);
+
+          return await response.blob();
+        }
+
+        myFetch()
+        .then(blob => {
+          let objectURL = URL.createObjectURL(blob);
+          let image = document.createElement('img');
+          image.src = objectURL;
+          document.body.appendChild(image);
+        })
+        .catch(e => console.log(e));
+      }
+
+      /* ASYNC/AWAIT WITH SYNCHRONOUS CATCH VERSION */
+      function ASYNC_AWAIT_WITH_SYNC_CATCH_VERSION(){
+        console.log('promise : async/await with synchronous catch version');
+
+        async function myFetch() {
+          try {
+            let response = await fetch('coffee.jpg');
+
+            if (!response.ok)
+              throw new Error(`HTTP error! status: ${response.status}`);
+
+            let myBlob = await response.blob();
+            let objectURL = URL.createObjectURL(myBlob);
+            let image = document.createElement('img');
+            image.src = objectURL;
+            document.body.appendChild(image);
+          } catch(e) {
+            console.log(e);
+          }
+        }
+        myFetch();
+
+        /* this synchronous try catch block style is not recomended
+        for the ASYNC_AWAIT_VERSION2() function that we created.
+        If you used the try/catch block there, you might
+        still get unhandled errors in the myFetch() function
+        when it's called. 
+            
+        Thats why If you wanted to use the second version
+        ASYNC_AWAIT_VERSION2(), you would be better off just
+        continuing the hybrid approach and chaining a .catch() block
+        onto the end of the .then() call.
+
+        This is because the .catch() block will catch errors
+        occurring in both the async function call and the promise
+        chain. */
+
+      }
+      
+    </script>
+  </body>
+</html>

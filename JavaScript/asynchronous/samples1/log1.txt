@@ -1,0 +1,14 @@
+Instantiation of Promise : Anything runs inside
+
+first then
+Resolve 2 Message : Success 
+
+second then [ 'Success', 0 ]
+Resolve 3 StatusCode : 0 
+
+third then
+the operation is a Success
+fourth then undefined
+fifth then undefined
+done forth then...
+done fifth then...

@@ -1,0 +1,27 @@
+HOW TO BUILD & INSTALL ZLIB WITH LIBPGN IN WINDOWS USING MINGW64-POSIX AND CMAKE
+
+ADD THE BIN FOLDER OF MINGW64 TO ENVIRONMENT VARIABLES
+
+compiler requirements : mingw64 - POSIX
+
+Requirements:
+	- Mingw64 - Posix (you maybe you can also use mingw32 but I don't know if that will work the same)
+	- cmake (atm: i'm using "cmake version 3.20.0-rc3")
+
+1. install Zlib:
+
+	cd "your/zlib/path"
+	mkdir "build"
+	cmake -G "MinGW Makefiles" -DCMAKE_INSTALL_PREFIX="your/zlib/build/path" .
+	mingw32-make
+	mingw32-make install
+
+2. add the "bin", "include", and "lib" folder of zlib/build to your environment variables
+
+3. install libpng:
+
+	cd "your/libpgn/path"
+	mkdir "build"
+	cmake -G "MinGW Makefiles" -DCMAKE_INSTALL_PREFIX="your/libpng/build/path" .
+	mingw32-make
+	mingw32-make install

@@ -1,0 +1,97 @@
+HOW TO CREATE A LIBRARY IN C++
+
+FIRST GO TO YOUR CURRENT DIRECTORY WHERE ALL YOUR .h and .cpp files are located
+
+step 1 - COMPILE OBJECT FILES :
+
+	in your current directory, compile all the .cpp files that links to your main .h header files
+	this cpp files should have a (#include "name_of_main_h_file") above.
+
+		"g++ -c header1.cpp header2.cpp"	// if you want to specify/choose the name of your .cpp files
+			or
+		"g++ -c *.cpp"						// * means all, so this compile all .cpp file in the current directory into a .o (object file)
+		
+		after this step you should have new files that has the same filename as you .cpp file but their file extension is .o
+		eg.:	header1.cpp -> header1.o	// this is called an object file, or machine code
+				header2.cpp -> header2.o
+		
+		
+STEP 2 - COMPILE OBJECT FILES INTO ONE LIBRARY :
+
+	still in your current directory, after compiling them you can put them into one library(.a) file
+	
+		"ar rvs your_library_name.a header1.o header2.o"	// joins only the selected header objects
+			or
+		"ar rvs your_library_name.a *.o"	// automatically joins all object files in the current directory
+
+
+STEP 3 - USE YOUR LIBRARY :
+
+	to use your library, first is the main header file should be present and
+	the compiled library should be present in your current project directory
+	
+		"g++ main.cpp your_library_name.a"
+		
+		this step will link your main.cpp file to the already compiled object files in your library,
+		make sure that the main header file is present and #included in your main.cpp
+		
+		
+INTRODUCTION TO C++ LIBRARIES
+
+Static Libraries format
+	windows:	.lib
+	linux  :	.a
+	
+Dynamic libraries
+	windows:	.dll
+	linux  :	.so
+    
+    
+C++ Libraries
+
+A C++ library usually consists of:
+
+A header file: This defines the functionality that the library is offering.
+A precompiled binary: This file contains the actual implementation of the functionality. This implementation is precompiled into a machine language.
+
+Libraries are precompiled as there is no reason to recompile the libraries as they hardly change. Secondly, as the precompiled libraries are into a machine language form, they are secured as nobody can access them directly. Thus the libraries are secured.
+
+In C++ we have two types of Libraries:
+
+    Static Libraries
+    Dynamic libraries
+
+
+Static Libraries
+
+	Static Libraries are also called as Archives. A static library is a library that becomes a part of the executable which references it. Thus when we develop an application and reference a static library in it, the contents of the static library are replaced in the application.
+
+
+	The static libraries on Windows usually have an extension “.lib” while those on Linux has extension “.a” (or archive).
+
+
+One advantage of having a program reference static library is that we don’t have to distribute the static library along with the executable. This is because the contents of the static library are a part of the applications and there is no need to give it separately.
+
+This specific advantage results in a disadvantage as the executable can become bulky and too much space is wasted as the library is a part of the executable.
+
+Another disadvantage of having a static library is that if the static library changes, then the executable referencing it needs to be updated as well.
+
+
+
+Dynamic Libraries
+
+	The dynamic library is also known as the “shared Library”.
+	
+	In Windows, the dynamic library has the extension “.dll” (dynamically linked library).
+	On Linux, the dynamic library has the extension “.so” (shared object).
+
+
+A dynamic library is a library that consists of routines that are loaded into the application at run time. When an application references a dynamic library, then the library does not become a part of the application but it remains as a separate unit.
+
+The dynamic library has an advantage that one copy of the library can be shared by many applications thereby saving space. Yet another advantage is that, as the dynamic library is a separate unit, the application executable does not change when the dynamic library changes.
+
+The only disadvantage that a dynamic library has is that it requires a separate program to load and reference the library which can be cumbersome. To solve this problem, we use the “import library” routine.
+
+An import library is a mechanism that loads and uses a dynamic library automatically into the program. On Windows, the import library keeps a small static library (.lib) having the same name as the .dll file and is linked to the program at compile time.
+
+Once this is done, the dynamic library is used as if it were a static library. On the Linux operating system, the dynamic library or the shared object (.so) file acts as an import library as well as a dynamic library. Most of the linkers on Linux OS are able to build an import library for a dynamic library.

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {padding: 0px; margin: 0px;}
+
+        #image{
+            max-width: 100%;
+            margin: -100px 0px;
+        }
+
+        .rects{
+            position: relative;
+            height: 100px;
+            z-index: 0;
+        }
+
+        #rect-top{
+            background-image: linear-gradient(45deg, rgba(0, 194, 228, 0.75), rgba(214, 0, 203, 0.479));
+        }
+
+        #rect-bottom{
+            background-image: linear-gradient(45deg,rgba(214, 0, 203, 0.479), rgba(0, 194, 228, 0.75));
+        }
+
+    </style>
+    <title>Image with Gradient</title>
+</head>
+<body>
+    <div id="rect-top" class="rects"></div>
+    <img id="image" src="image-with-gradient.jpg">
+    <div id="rect-bottom" class="rects"></div>
+</body>
+</html>

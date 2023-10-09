@@ -1,0 +1,3 @@
+/home/manaciel/Repo/cmake-indepth/build/CMakeFiles/cmake-executable.dir
+/home/manaciel/Repo/cmake-indepth/build/CMakeFiles/edit_cache.dir
+/home/manaciel/Repo/cmake-indepth/build/CMakeFiles/rebuild_cache.dir

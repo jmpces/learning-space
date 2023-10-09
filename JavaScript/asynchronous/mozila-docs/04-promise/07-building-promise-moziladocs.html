@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <title>Building Costum Promise</title>
+  </head>
+  <body>
+    <script>
+
+    let timeoutPromise = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve('Success!');
+      }, 2000);
+    });
+
+    timeoutPromise
+    .then((message) => {
+      alert(message);
+    });
+
+    // or 
+
+    // timeoutPromise.then(alert);
+
+
+    </script>
+  </body>
+</html>

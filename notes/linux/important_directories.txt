@@ -1,0 +1,5 @@
+ubuntu - binary file locations
+  usr/bin
+  usr/local/bin
+  home/$USER/.local/bin
+  

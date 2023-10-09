@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <title>Simple setInterval clock</title>
+    <style>
+      p {
+        font-family: sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <p id="clock"></p>
+    <input id="start" type="button" value="start">
+    <input id="stop" type="button" value="stop">
+    <input id="reset" type="button" value="reset">
+
+    <script>
+      // get buttons
+      let start_btn = document.getElementById('start');
+      let stop_btn  = document.getElementById('stop');
+      let reset_btn = document.getElementById('reset');
+
+      // create a start, stopped & end variables
+      let start = 0;
+      let end = 0;
+      let stopped = false;
+
+      // function that display the elapsed time
+      function displayTime() {
+        document.getElementById('clock').textContent = (Date.now()-start)/1000 + ' second(s)';
+      }
+
+      // update intervals id
+      let createClock;
+
+      // add event listeners
+      start_btn.addEventListener('click', event =>{
+        if(start===0)
+          start = Date.now();
+        else
+          start -= (end-Date.now());
+        createClock = setInterval(displayTime, 1000)
+      });
+
+      stop_btn.addEventListener('click', event =>{
+        end = Date.now();
+        clearInterval(createClock);
+      });
+
+      reset_btn.addEventListener('click', event =>{
+        start = 0;
+        end = 0;
+        clearInterval(createClock);
+      });
+
+    </script>
+  </body>
+</html>

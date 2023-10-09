@@ -1,0 +1,43 @@
+<html>
+  <head>
+    <title></title>
+    <meta content="">
+    <style>
+      body{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .outer{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+        height: 50vh;
+        width: 50vh;
+        background-color: royalblue;
+        transform: rotate(45deg);
+      }
+
+      #inner{
+        height: 20vh;
+        width: 20vh;
+        background-color: rebeccapurple;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="outer">
+      <div id="inner"></div>
+    </div>
+    <script>
+      let div = document.getElementById('inner');
+      let degree = 0, rotationPerSecond = 4;
+      setInterval(()=>{
+        degree %= 360;
+        div.style.transform = 'rotate(' +(degree++)+ 'deg)';
+      },11);
+    </script>
+  </body>
+</html>

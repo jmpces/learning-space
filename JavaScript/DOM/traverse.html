@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOM Traversal</title>
+  <style>
+    *{
+      padding: 0px;
+      margin: 0px;
+      box-sizing: border-box;
+    }
+
+    body{
+      height: 100vh;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    div{
+      border: solid black 4px;
+    }
+
+    .grandparent{
+      height: 400px;
+      width: 400px;
+
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      flex-direction: column;
+
+      background-color: rgb(226, 38, 38);
+    }
+
+    .parent{
+      height: 35%;
+      width: 80%;
+
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+
+      background-color: rgb(19, 161, 19);
+    }
+
+    .child{
+      height: 60%;
+      width: 35%;
+
+      background-color: rgb(31, 31, 248);
+    }
+  </style>
+  <script src="traverse.js" defer></script>
+</head>
+<body>
+  <div class="grandparent" id="f-gp">
+    <div class="parent" id="f-p1">
+      <div class="child" id="f-p1-c1"></div>
+      <div class="child" id="f-p1-c2"></div>
+    </div>
+    <div class="parent" id="f-p2">
+      <div class="child" id="f-p2-c1"></div>
+      <div class="child" id="f-p2-c2"></div>
+    </div>
+  </div>
+</body>
+</html>

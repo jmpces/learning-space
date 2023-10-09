@@ -1,0 +1,9 @@
+Instantiation of Promise : Anything runs inside
+
+first then
+second then undefined
+third then
+catch TypeError: Cannot read properties of undefined (reading '1')
+    at /home/mrdcvlsc/Prototyping/javascript/asynchronous/samples1/04-promise.js:67:9
+Resolve 2 Message : Success 
+

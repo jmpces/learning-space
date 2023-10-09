@@ -1,0 +1,33 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.textfield-with-icon{
+    display: flex;
+
+    /* text-field with icon's height */
+    height: 50px;
+
+    /* text-field with icon's width */
+    width: 80vw;
+}
+
+.icon{
+    /* change icon image here */
+    background-image: url(magniglass.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    border: 1px solid black;
+    height: inherit;
+
+    /* icon's width */
+    width: 50px;
+}
+
+.input-text{
+    width: inherit;
+}

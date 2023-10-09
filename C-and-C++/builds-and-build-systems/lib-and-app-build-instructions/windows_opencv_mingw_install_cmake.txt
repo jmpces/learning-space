@@ -1,0 +1,140 @@
+HOW TO BUILD & INSTALL OPENCV FOR MINGW IN WINDOWS USING CMAKE
+
+Pre-requisite:
+- you should have "mingw64-posix" with gcc/g++ in your system; bin paths should be added to environment variables
+- you should have cmake and it's path should be added to your environment variables
+
+
+1. configure installation using the command:
+
+	cmake -G "MinGW Makefiles" -D CMAKE_BUILD_TYPE=Release -D OPENCV_ENABLE_ALLOCATOR_STATS=OFF -D CMAKE_INSTALL_PREFIX="PATH\build" "PATH\source"
+
+# Delete the files inside the build folder first, those files are only for Microsoft Visual Studio Compilers
+
+# OTHER -D flags that you might want to use when configuring your build
+	-D WITH_OPENMP=ON
+	-D WITH_IPP=ON
+	-D CMAKE_BUILD_TYPE=RELEASE
+	-D BUILD_EXAMPLES=OFF
+	-D WITH_NVCUVID=ON
+	-D WITH_CUDA=ON
+	-D BUILD_DOCS=OFF
+	-D BUILD_PERF_TESTS=OFF
+	-D BUILD_TESTS=OFF
+	-D WITH_CSTRIPES=ON
+	-D WITH_OPENCL=ON
+	-D BUILD_SHARED_LIBS=OFF
+
+
+2. compile the source code using the command:
+
+	mingw32-make
+
+
+3. link all of the compiled object file into your installation destination (CMAKE_INSTALL_PREFIX) specified in step 1
+
+	mingw32-make install
+
+
+DONE...
+
+
+To compile OpenCV program directly in command line you need to add the following flags
+-I"PATH/build/include"
+-L"PATH/x64/mingw/lib"
+
+and you might want to include the proper library, the basic libs are
+-lopencv_core450
+-lopencv_highgui450
+-lopencv_imgcodecs450
+
+just look at the "PATH/build/x64/mingw/lib" the files where the filename "lib" at the start
+and has a ".a" at the end are your libraries
+
+example the library for -lopencv_core450 is "libopencv_core450.a" or "libopencv_core450.dll.a"
+just remove the "lib" and the ".a" when you add it to your compiler flags
+
+compilation might look like the given command below:
+
+	g++ main.cpp -o main.exe -I"PATH\build\include" -L"PATH\build\x64\mingw\lib" -lopencv_core450 -lopencv_highgui450 -lopencv_imgcodecs450
+
+if you did not build your opencv statically you might need to include the path "PATH\build\x64\mingw\bin" in your environment variables
+
+when compiling statically there might be some time where you want to put the opencv_ffmpegXXX.dll on the same
+directory where your .exe is located
+
+---------------------------
+Compiling programs with Staticaly-linked opencv libraries is harder, I advice using cmake for this
+
+---------------------------------------------------------------------------------------
+     here is a "CMakeLists.txt" that I used to build a simple test opencv program
+---------------------------------------------------------------------------------------
+cmake_minimum_required(VERSION 3.7)
+project(main)
+
+set(CMAKE_CXX_STANDARD 11)
+
+find_package(OpenCV REQUIRED)
+
+set(SOURCE_FILES main.cpp)
+add_executable(main ${SOURCE_FILES})
+
+target_link_libraries(main ${OpenCV_LIBS} "-static" -static-libgcc -static-libstdc++)
+
+message(STATUS ${main})
+
+# in command line input :
+# cmake -G "MinGW Makefiles" .
+# mingw32-make
+---------------------------------------------------------------------------------------
+my last opencv build that is working: cmake -G "MinGW Makefiles" -DCMAKE_BUILD_TYPE=RELEASE -DOPENCV_ENABLE_ALLOCATOR_STATS=OFF -DBUILD_SHARED_LIBS=OFF -DCMAKE_INSTALL_PREFIX=PATH\opencv\build PATH\opencv\sources
+
+
+
+----------------------------------------------------------------------------------------
+                                CMAKE USED IN IMCRYPT
+----------------------------------------------------------------------------------------
+# Windows
+
+cmake_minimum_required(VERSION 3.18)
+project(main)
+
+if(NOT CMAKE_BUILD_TYPE)
+    set(CMAKE_BUILD_TYPE Release)
+endif()
+
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
+set(CMAKE_CXX_FLAGS " ")
+set(CMAKE_CXX_FLAGS_DEBUG "-Wall -Wextra -g -fsanitize=address")
+set(CMAKE_CXX_FLAGS_RELEASE "-O3")
+
+find_package(OpenCV REQUIRED)
+
+set(SOURCE_FILES img_crypt.cpp)
+add_executable(main ${SOURCE_FILES})
+
+target_link_libraries(main ${OpenCV_LIBS} "-static" -static-libgcc -static-libstdc++)
+
+# message(STATUS ${main})
+
+# in command line input :
+# cmake -G "MinGW Makefiles" .
+# mingw32-make
+
+or you can figure out how to compile it in the command line using this pkgfile as a reference
+
+# Package Information for pkg-config
+
+prefix=/usr/local
+exec_prefix=${prefix}
+libdir=${exec_prefix}
+includedir=${prefix}/include
+
+Name: OpenCV
+Description: Open Source Computer Vision Library
+Version: 4.5.4
+Libs: -L${exec_prefix}/lib -lopencv_gapi -lopencv_highgui -lopencv_ml -lopencv_objdetect -lopencv_photo -lopencv_stitching -lopencv_video -lopencv_calib3d -lopencv_features2d -lopencv_dnn -lopencv_flann -lopencv_videoio -lopencv_imgcodecs -lopencv_imgproc -lopencv_core
+Libs.private: -L${exec_prefix}/lib/opencv4/3rdparty -llibprotobuf -lade -littnotify -llibjpeg-turbo -llibwebp -llibtiff -llibopenjp2 -lIlmImf -lquirc -lippiw -lippicv -L/usr/local/lib -lpng -lz -ldl -lm -lpthread -lrt
+Cflags: -I${includedir}

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            position: relative;
+            padding: 30px;
+            font-family: Arial;
+            background: #cccccc;
+            color: #fff;
+        }
+        .exampleoverlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 10;
+        }
+        .examplemodal {
+            width: 300px;
+            height: 200px;
+            line-height: 200px;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            margin-top: -100px;
+            margin-left: -150px;
+            background-color: #f35798;
+            border-radius: 5px;
+            text-align: center;
+            z-index: 11; /* 1px higher than the overlay layer */
+        }
+        .maincontent {
+            margin: 10px;
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <h1>Start</h1>
+    <div>
+        <div class="exampleoverlay"></div>
+        <div class="examplemodal">This is the content in your pop-up window.</div>
+        <div class="maincontent">
+            <h1>Your main page header goes here.</h1>
+            Your main page content goes here. Blah blah blah, etc.
+        </div>
+    </div>
+    <h1>End</h1>
+</body>
+</html>

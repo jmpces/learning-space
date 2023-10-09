@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/cmake-with-lib.out.dir/main.cpp.o -o cmake-with-lib.out  MathFunctions/libmymath.a MathFunctions/libfoo.a 

@@ -1,0 +1,7 @@
+/home/manaciel/Repo/cmake-indepth/section-3.5-normal-adding-library-with-usage-requirement/build/CMakeFiles/cmake-with-lib.out.dir
+/home/manaciel/Repo/cmake-indepth/section-3.5-normal-adding-library-with-usage-requirement/build/CMakeFiles/edit_cache.dir
+/home/manaciel/Repo/cmake-indepth/section-3.5-normal-adding-library-with-usage-requirement/build/CMakeFiles/rebuild_cache.dir
+/home/manaciel/Repo/cmake-indepth/section-3.5-normal-adding-library-with-usage-requirement/build/MathFunctions/CMakeFiles/mymath.dir
+/home/manaciel/Repo/cmake-indepth/section-3.5-normal-adding-library-with-usage-requirement/build/MathFunctions/CMakeFiles/foo.dir
+/home/manaciel/Repo/cmake-indepth/section-3.5-normal-adding-library-with-usage-requirement/build/MathFunctions/CMakeFiles/edit_cache.dir
+/home/manaciel/Repo/cmake-indepth/section-3.5-normal-adding-library-with-usage-requirement/build/MathFunctions/CMakeFiles/rebuild_cache.dir

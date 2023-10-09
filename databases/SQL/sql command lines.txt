@@ -1,0 +1,66 @@
+#create a database
+CREATE DATABASE humanresources
+
+#create table
+CREATE TABLE persons (personid int,personname VARCHAR(100),city VARCHAR(50),country VARCHAR(50))
+
+#alter a table - add column
+ALTER TABLE persons ADD COLUMN yearofbirth DATE
+
+#drop a column in a table
+ALTER TABLE persons DROP COLUMN country
+
+#change a data type of a column
+ALTER TABLE persons MODIFY COLUMN yearofbirth INT
+
+#delete a table
+DROP TABLE peersons
+
+------------------------------------------------------------------------
+
+CREATE TABLE persons(
+
+#adding a primary key to a database
+personID INT PRIMARY KEY,
+personName VARCHAR(150)
+)
+
+CREATE DATABASE humanresource
+
+CREATE TABLE persons(
+#indicates auto increment when adding a row
+personID INT AUTO_INCREMENT,
+personName VARCHAR(70),
+
+#another way of declaring a primary key
+CONSTRAINT pk_personid PRIMARY KEY(personID)
+)
+
+#adding constraints
+CREATE TABLE students(
+studentID intstudents PRIMARY KEY AUTO_INCREMENT,
+studentName VARCHAR(100) NOT NULL,
+address VARCHAR(100),
+passportNo VARCHAR(100) UNIQUE,
+salary DECIMAL(10,2) DEFAULT 4000
+)
+
+
+--=-=-==-=-=-=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+FOREIGN KEY 53:22
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

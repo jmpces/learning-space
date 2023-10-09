@@ -1,0 +1,33 @@
+https://renenyffenegger.ch/notes/development/languages/C-C-plus-plus/GCC/create-libraries/index#main-src
+
+With the static library, we can statically link main.o with the library.
+The -L flag indicates (a non standard) directory where the libraries can be found.
+The -l flag indicates the name of the library. Note, that it assumes the library to start with lib and end with .o (so lib and .o must not be specified)
+
+# object files for shared libraries need to be compiled as position independent
+# code (-fPIC) because they are mapped to any position in the address space.
+
+
+sample code with sample files:
+
+g++ -I./ -c add.cpp -o add.o
+ar rcs libmath.a add.o
+g++ -I./ main.cpp -L./ -lmath -o main.o
+./main.o
+
+
+-c       Suppresses the diagnostic message that  is  written
+          to  standard  error  by  default  when  archive  is
+          created.
+
+ -r       Replaces or adds files in archive. If archive  does
+          not  exist,  a  new  archive  file is created.
+
+ -v       Gives verbose output. When used  with  options  -d,
+          -r,  or  -x,  the -v option writes a detailed file-
+          by-file description of the archive creation and the
+          constituent  files,  and maintenance activity.
+
+ -s       Forces the regeneration of the archive symbol table
+          even  if ar is not invoked with an option that will
+          modify the archive contents.

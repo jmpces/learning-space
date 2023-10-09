@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Buttons</title>
+</head>
+<body>
+	<div class="main">
+		<hr><br>
+		<label>Test 1 </label><br><br>
+		<input type="button" class="sample1" value="Discard" id="btn1">
+		<input type="button" class="sample1" value="Publish" id="btn2">
+		<br>
+		<style>
+			.sample1{
+				padding: 7px;
+				padding-right: 17px; 
+				padding-left: 17px;
+
+				margin: 4px;
+				border-radius: 3px;
+				outline: none;
+			}
+
+			#btn1{
+				background-color: rgb(194,194,205);
+
+				border: 1px solid rgb(194,194,205);
+
+				color: white;
+
+				font-weight: normal;
+			}
+
+			#btn2{
+				background-color: rgb(247,145,58);
+
+				border: 1px solid rgb(247,145,58);
+
+				font-weight: bolder;
+				color: white;
+			}
+
+			#btn1:hover{
+				transition: .2s ease;
+				box-shadow: 0px 0px 1px 2px rgb(194,194,205);	
+			}
+
+			#btn2:hover{
+				transition: .2s ease;
+				border-radius: .5px;
+				box-shadow: 0px 0px 1px 2px orange;
+			}
+
+			#btn1:active{
+				box-shadow: 0px 0px 2px 4px rgb(194,194,205);	
+			}
+
+			#btn2:active{
+				box-shadow: 0px 0px 2px 4px orange;	
+			}
+			
+		</style>
+
+		<!-- sample 2 -->
+		<hr><br>
+		<label>Test 2 </label><br><br>
+		<input type="button" class="sample2" value=" Cancel " id="button_1">
+		<input type="button" class="sample2" value="Continue" id="button_2">
+		<br>
+		<style>
+			.sample2{
+				padding: 7px;
+				padding-right: 14px; 
+				padding-left: 14px;
+
+				margin: 4px;
+				border-radius: 3px;
+				outline: none;
+			}
+
+			#button_1{
+				background-color: transparent;
+
+				border: 1px solid black;
+
+				font-weight: normal;
+			}
+
+			#button_2{
+				background-color: rgb(45,188,26);
+
+				border: 1px solid rgb(45,188,26);
+
+				font-weight: bolder;
+				color: white;
+			}
+
+			#button_1:hover{
+				transition: .2s ease;
+				box-shadow: 0px 0px 1px 2px black;	
+			}
+
+			#button_2:hover{
+				transition: .2s ease;
+				border-radius: .5px;
+				box-shadow: 0px 0px 1px 2px rgb(45,188,26);
+			}
+
+			#button_2:active{
+				box-shadow: 0px 0px 2px 4px green;	
+			}
+
+			#button_1:active{
+				box-shadow: 0px 0px 2px 4px grey;	
+			}
+		</style>
+
+		<!-- sample 4 -->
+		<hr><br>
+		<label>Test 4 </label><br><br>
+			<div class="contain">
+				<input type="button" class="sample3" value="Log In" id="button2">
+				<input type="button" class="sample3" value="Register" id="button1">
+			</div>
+		<br>
+		<style>
+			.contain{
+				display: ;
+				width: 300px;
+			}
+
+			.sample3{
+				padding: 6px;
+				text-align: center;
+				width: 100%;
+
+				margin: 4px;
+				border-radius: 3px;
+				outline: none;
+			}
+
+			#button1{
+				background-color: transparent;
+
+				border: 1px solid black;
+
+				font-weight: normal;
+			}
+
+			#button2{
+				background-color: rgb(45,188,26);
+
+				border: 1px solid rgb(45,188,26);
+
+				font-weight: bolder;
+				color: white;
+			}
+
+			#button1:hover{
+				transition: .4s ease;
+				box-shadow: 0px 0px 1px 1px black;	
+			}
+
+			#button2:hover{
+				transition: .2s ease;
+				border-radius: .5px;
+				box-shadow: 0px 0px 1px 2px rgb(45,188,26);
+			}
+
+			#button2:active{
+				box-shadow: 0px 0px 2px 2px green;	
+			}
+
+			#button1:active{
+				box-shadow: 0px 0px 2px 2px black;	
+			}
+		</style>
+
+		<!-- sample 5 -->
+		<hr><br>
+		<label>Test 5 </label><br><br>
+			<div class="contain">
+				<input type="button" class="sample3" value="Register" id="button5">
+			</div>
+		<br>
+		<style>
+			#button5{
+				outline: none;
+				font-weight: bold;
+
+				width: 80px;
+
+				background-color: transparent;
+				color: black;
+
+				border: 2px solid black;
+
+				border-radius: 3px 3px 3px 3px / 3px 3px 3px 3px;
+
+			}
+			#button5:hover{
+				transition: 0.1s ease;
+				color: white;
+				background-color: black;
+			}
+			#button5:focus{
+				transition: .81s ease;
+
+				color: yellow;
+				border-color: yellow;
+				background-color: rgb(50,50,50);
+			}
+		</style>
+	
+
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+	<style>
+		.main{
+			padding: 20px;
+		}
+	</style>
+	</div>
+</body>
+</html>

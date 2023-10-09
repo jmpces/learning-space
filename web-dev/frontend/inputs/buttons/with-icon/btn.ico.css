@@ -1,0 +1,39 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.button-with-icon{
+    display: flex;
+    position: relative;
+
+    /* adjust here : width of button-with-icon */
+    width: 300px;
+
+    /* adjust here : height of button-with-icon */
+    height: 50px;
+}
+
+.icon{
+
+    /* if absolute is enabled, it will overlap the button and icon */
+    position: absolute;
+    /* right: 0px; shifts the icon on the right if absolute position is on */
+
+    height: inherit;
+
+    /* adjust here : width of the icon */
+    width: 50px;
+    
+    background-image: url("icons8-google.svg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 80%;
+}
+
+.btn{
+    width: 100%;
+    height: 100%;
+}

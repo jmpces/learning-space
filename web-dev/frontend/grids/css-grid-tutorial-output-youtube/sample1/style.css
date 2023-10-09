@@ -1,0 +1,118 @@
+/*
+    https://www.youtube.com/watch?v=DJq6R2b0FoE -->
+    LearnWebCode
+*/
+
+
+* {
+    margin: 0px;
+    padding: 0px;
+    font-family: "Source Sans Pro", sans-serif;
+}
+
+
+/* navigation bar : start */
+#page-header{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 21px 45px;
+    align-items: center;
+    background-color: #1d287c;
+    color: white;
+}
+
+nav > a{
+    display: inline-block;
+    margin: 0px 11px;
+    color: white;
+    text-decoration: none;
+    transition: 0.2s ease;
+}
+
+nav > a:hover{
+    color: rgb(167, 164, 164);
+    transform: rotate(6deg);
+}
+/* navigation bar : end */
+
+#main-content{
+    background-color: #c5cae9;
+    padding: 65px 0px;
+    display: flex;
+    justify-content: center;
+}
+
+#inner-main{
+    max-width:760px;
+    margin: 0px 30p;
+}
+
+#inner-main > h1{
+    font-size: 4rem;
+    font-weight: normal;
+}
+
+#inner-main > p{
+    padding: 20px 0px;
+    font-weight: normal;
+    font-size: 1.18rem;
+    line-height: 1.6;
+}
+
+#learn-more{
+    border: solid #1d287c;
+    background-color: #1d287c;
+    color: white;
+    padding: 10px;
+    border-radius: 5px 5px 5px 5px;
+    font-weight: bold;
+}
+
+#learn-more:hover{
+    border: solid #1d33db;
+    background-color: #1326b1;
+    color: rgb(255, 255, 255);
+}
+
+#learn-more:focus{
+    border: solid #09a85e8e;
+    background-color: #37c01b;
+    color: rgb(0, 0, 0);
+    transition: 0.3s ease;
+}
+
+/* features : start */
+
+#features-container{
+    background-color: #e8eaf6;
+}
+
+#features{
+    padding: 60px 23px;
+    margin: 0px auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 3rem 5rem;
+    max-width: 1150px;
+}
+
+.features-content > h3{
+    color: #1d287c;
+    font-size: 1.5rem;
+    font-weight: normal;
+}
+
+.features-content p{
+    line-height: 1.7;
+    font-weight: 50;
+}
+
+/* features : end */
+
+#footer {
+    text-align: center;
+    padding: 20px 0;
+    color: #999;
+    font-size: .9rem;
+}

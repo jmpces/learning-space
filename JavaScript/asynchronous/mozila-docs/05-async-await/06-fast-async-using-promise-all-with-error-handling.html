@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Demonstration of fast promise.all async/await with error handling</title>
+  </head>
+  <body>
+    <script>
+      
+      function timeoutPromiseResolve(interval) {
+        return new Promise((resolve, reject) => {
+          setTimeout(function(){
+            resolve("successful");
+          }, interval);
+        });
+      };
+
+      function timeoutPromiseReject(interval) {
+        return new Promise((resolve, reject) => {
+          setTimeout(function(){
+            reject("error");
+          }, interval);
+        });
+      };
+
+      async function timeTest() {
+        const timeoutPromiseResolve1 = timeoutPromiseResolve(5000);
+        const timeoutPromiseReject2 = timeoutPromiseReject(2000);
+        const timeoutPromiseResolve3 = timeoutPromiseResolve(3000);
+
+        return await Promise.all([
+          timeoutPromiseResolve1,
+          timeoutPromiseReject2,
+          timeoutPromiseResolve3
+        ]);
+        
+        /* The Promise.all() rejects when any of the input promises are rejected.
+        If you want all the promises to settle and then use some of their
+        fulfilled values, even when some of them are rejected, you could use
+        Promise.allSettled() instead like shown below:
+        
+        return await Promise.allSettled([
+          timeoutPromiseResolve1,
+          timeoutPromiseReject2,
+          timeoutPromiseResolve3
+        ]);
+
+        this will pass an array in the .then() method where each index contains
+        the status/(value/reason) pair for each promise like shown below:
+
+        [
+          {"status":"fulfilled","value":"successful"},
+          {"status":"rejected","reason":"error"},
+          {"status":"fulfilled","value":"successful"}
+        ]
+        
+        Promise.allSettled() won't trigger the .catch() method chained after the .then() method in line 65
+        */
+      }
+
+      let startTime = Date.now();
+
+      timeTest()
+        .then(() => {})
+        .catch(e => {
+          console.log(e);
+          let finishTime = Date.now();
+          let timeTaken = finishTime - startTime;
+          alert("Time taken in milliseconds: " + timeTaken);
+        })
+
+    </script>
+  </body>
+</html>

@@ -1,1 +1,5 @@
 official golang documentation - https://go.dev/doc/
+
+learn go - https://go.dev/tour/list
+
+learn go releated stuffs - https://go.dev/doc/tutorial/

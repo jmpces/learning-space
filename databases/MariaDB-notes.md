@@ -9,6 +9,13 @@ sudo apt-get install software-properties-common
 sudo apt-get install mariadb-server mariadb-client
 ```
 
+## Install MariaDB in Arch Linux
+
+```sql
+sudo pacman -Syu
+sudo pacman -S mariadb
+```
+
 ## Check if MariaDB is running
 
 ```sql

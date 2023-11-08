@@ -1,5 +1,16 @@
 # **Commands for npm and yarn**
 
+### Update `node` runtime itself using `npm`
+
+```bash
+sudo npm cache clean -f
+
+# (you can run this once)
+sudo npm install -g n
+
+sudo n stable
+```
+
 ### **Enable corepack (for yarn only | one time, first use)**
 ```shell
 corepack enable

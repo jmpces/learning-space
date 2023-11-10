@@ -61,7 +61,7 @@ FLUSH PRIVILEGES;
 ## Login to admin_user
 
 ```sql
-sudo mariadb -u admin_user -p
+mariadb -u admin_user -p
 ```
 
 ## Create A User For A Server

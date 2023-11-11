@@ -12,6 +12,15 @@
 /// supports: C++11 and above only
 namespace randomize
 {
+    std::uint16_t random_this() {
+        auto seed_data = std::array<int, std::mt19937::state_size>();
+        auto random_device = std::random_device();
+        std::generate_n(std::data(seed_data), std::size(seed_data), std::ref(random_device));
+        auto sequence = std::seed_seq(std::begin(seed_data), std::end(seed_data));
+        auto rng = std::mt19937(sequence);
+        return std::uniform_int_distribution(0, std::numeric_limits<std::uint16_t>::max())(rng);
+    }
+
     template<typename T, typename E>
     T integer()
     {

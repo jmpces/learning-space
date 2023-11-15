@@ -1,7 +1,7 @@
 ## Install Pandoc
 
 ```bash
-sudo apt-get install pandoc texlive-latex-base texlive-latex-recommended
+sudo apt-get install pandoc texlive-latex-base texlive-latex-recommended texlive-latex-extra
 ```
 
 ## Convert A Markdown File to PDF

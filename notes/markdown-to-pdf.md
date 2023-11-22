@@ -15,3 +15,9 @@ pandoc file.md -s -o file.pdf
 ```bash
 pandoc *.md -s -o merged.pdf
 ```
+
+## Example
+
+```bash
+pandoc -V geometry:margin=1.5in -s -o output-filename.pdf --from=markdown+grid_tables *.md
+```

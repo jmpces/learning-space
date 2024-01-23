@@ -64,6 +64,16 @@ FLUSH PRIVILEGES;
 mariadb -u admin_user -p
 ```
 
+## Exporting a Database
+```sql
+mysqldump -u username -p database_name > data-dump.sql
+```
+
+## Importing a Database
+``sql
+mysql -u username -p new_empty_database < data-dump.sql
+```
+
 ## Create A User For A Server
 
 1. **Create A User Using Root User On The Server**

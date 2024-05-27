@@ -9,6 +9,11 @@
     sudo apt-get install -y dotnet6
     ```
 
+    ```
+    sudo apt-get update &&
+    sudo apt-get install -y dotnet-sdk-8.0
+    ```
+
 - ## **Installing only the Runtime**
 
     ```
@@ -17,8 +22,8 @@
     ```
 
     ```
-    sudo apt-get update &&
-    sudo apt-get install -y dotnet-sdk-8.0
+    sudo apt-get update && \
+    sudo apt-get install -y aspnetcore-runtime-8.0
     ```
 
 # **Windows**

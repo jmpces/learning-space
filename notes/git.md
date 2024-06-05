@@ -223,7 +223,12 @@ git push -u origin <new branch>
 
 - **Add a remote repository**
   ```bash
-  git remote <name> <url>
+  git remote add <name> <url>
+  ```
+
+- **Remove a remote repository**
+  ```bash
+  git remote remove <name>
   ```
 
 # Submodules

@@ -86,12 +86,6 @@ git push -u origin <new branch>
   git checkout -t <remote-name>/<branch-name>
   ```
   
-- **Merge branch**
-  ```bash
-  git checkout <origin-branch>
-  git merge <changes-branch>
-  ```
-  
 - **Stash some specific file changes from another branch**
   ```bash
   git checkout <main-branch>
@@ -261,8 +255,26 @@ git add .
 
 # Merge Vs Rebase
 
-- (`feature` -> `main`) merge for bring a feature branch to master/main branch
-- (`main` -> `feature`) rebase for bringing new changes from master/main branch to a feature branch
+- (`feature` -> `main`) merge is mostly used for bringing new commits from feature branch to master/main branch
+- (`main` -> `feature`) rebase is mostly used for bringing new commits from master/main branch to a feature branch
+
+- **Merge branch**
+
+  _This operation stacks the incoming feature branch commits on top of the existing commit history of the main branch._
+
+  ```bash
+  git checkout <main-branch>
+  git merge <feature-branch>
+  ```
+
+- **Rebase branch**
+
+  _This operation temporarily removes the current feature branch commits, stacks the new incoming commits from the main branch on top of the feature branch history, and then restacks the current feature branch commits back._
+
+  ```bash
+  git checkout <feature-branch>
+  git rebase <main-branch>
+  ```
 
 # Tags
 

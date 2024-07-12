@@ -28,6 +28,18 @@ sudo systemctl status mariadb
 sudo systemctl start mariadb
 ```
 
+## Stop MariaDB if not running
+
+```sql
+sudo systemctl stop mariadb
+```
+
+## Status MariaDB
+
+```sql
+sudo systemctl status mariadb
+```
+
 ## Enable MariaDB to start system start-up
 
 ```sql
@@ -70,13 +82,15 @@ mysqldump -u username -p database_name > data-dump.sql
 ```
 
 ## Importing a Database
-``sql
+
+```sql
 mysql -u username -p new_empty_database < data-dump.sql
 ```
 
 ## Create A User For A Server
 
 1. **Create A User Using Root User On The Server**
+
     ```sql
     CREATE USER <db_user_name>@localhost IDENTIFIED BY '<db_user_password>';
     GRANT ALL privileges ON `<database_name>`.* TO <db_user_name>@`<user_address>` IDENTIFIED BY '<db_user_password>';

@@ -1,5 +1,12 @@
 # **Ubuntu**
 
+- ## For .NET (MAUI)
+
+    ```
+    wget https://dot.net/v1/dotnet-install.sh -O dotnet-install.sh
+    chmod +x ./dotnet-install.sh
+    ```
+
 - ## **Installing the SDK**
 
     [Link Reference](https://learn.microsoft.com/en-us/dotnet/core/install/linux-ubuntu#install-the-sdk)

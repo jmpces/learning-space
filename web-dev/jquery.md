@@ -18,6 +18,19 @@ let WholeHTMLdocument = $(document);
 let htmlElement = $("css-selector");
 ```
 
+## Traversing Elements
+
+```js
+// get the next sibling
+$("css-selector").next()
+
+// get the previous sibling
+$("css-selector").prev()
+
+// get the parent
+$("css-selector").parent()
+```
+
 ## DOM Ready Event
 
 Event handler that fires when the whole html document finised loading.

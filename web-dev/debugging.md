@@ -1,5 +1,9 @@
 # Debugging Techniques
 
+## Shortcut Keys
+
+- `Ctrl+Shift+C` - (Chrome) Select HTML Element
+
 ## Chrome Monitor Event For An Element
 
 1. Open Developer Mode
